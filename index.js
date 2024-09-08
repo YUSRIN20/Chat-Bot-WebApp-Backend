@@ -11,7 +11,6 @@ app.use(cors());
 app.use(express.json());
 
 const heygenApiKey = process.env.HEYGEN_API_KEY;
-const openAIApiKey = process.env.OPENAI_API_KEY;
 const geminiApiKey = process.env.GEMINI_API_KEY
 const port = process.env.PORT || 5000;
 
