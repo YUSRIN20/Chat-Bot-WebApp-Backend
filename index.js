@@ -14,9 +14,9 @@ const heygenApiKey = process.env.HEYGEN_API_KEY;
 const geminiApiKey = process.env.GEMINI_API_KEY
 const port = process.env.PORT || 5000;
 
-const client = new OpenAI({
-    apiKey: openAIApiKey, // This is the default and can be omitted
-});
+// const client = new OpenAI({
+//     apiKey: openAIApiKey, // This is the default and can be omitted
+// });
 
 
 const genAI = new GoogleGenerativeAI(geminiApiKey);
