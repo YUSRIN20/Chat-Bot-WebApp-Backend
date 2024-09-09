@@ -7,7 +7,7 @@ const genAI = new GoogleGenerativeAI(geminiApiKey);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 const allowedTopics = ['technology', 'daily news', 'personal finance', 'fun facts'];
-const conversationalTopics = ['hi','hey','hello', 'how are you', 'what are you doing', 'tell me a joke','ok thank you','thank you','lets gets start','shall we start','ok gemini','ok bye','ok enough','see you later','i need your help','one help'];
+const conversationalTopics = ['hi','hey','hello', 'how are you', 'what are you doing', 'tell me a joke','ok thank you','thank you','lets gets start','','ok gemini','ok bye','ok enough','see you later','one help','ok bye see you tommorrow','see you tommorrow'];
 const personalTopics = ['who invented you','what your age','what abdul']
 export const generateChatContent =  async (req, res) => {
     const { prompt } = req.body;
@@ -52,11 +52,6 @@ export const generateChatContent =  async (req, res) => {
     try {
         const result = await model.generateContent(modifiedPrompt);
         const responseText = result.response.text();
-
-        //    // Generate avatar video
-        //    const videoResponse = await generateAvatarVideo(responseText);
-        //    const videoId = videoResponse.data.video_id; // Assuming `video_id` is returned in the response
-        //    console.log(videoResponse.data.video_id);
            
            res.status(200).json({
                response: responseText,
