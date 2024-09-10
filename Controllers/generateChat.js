@@ -15,10 +15,9 @@ export const generateChatContent =  async (req, res) => {
     // Check if the question fits within the allowed or conversational topics
     const isAllowed = allowedTopics.some(topic => prompt.toLowerCase().includes(topic));
     const isConversational = conversationalTopics.some(topic => prompt.toLowerCase().includes(topic));
-    const isPersonl = personalTopics.some(topic => prompt.toLowerCase().includes(topic));
 
     
-    if (!isAllowed && !isConversational && !isPersonl) {
+    if (!isAllowed && !isConversational) {
         return res.status(400).json({ message: `Please ask questions related to: ${allowedTopics.join(', ')}.` });
     }
 
@@ -45,9 +44,7 @@ export const generateChatContent =  async (req, res) => {
     
     } else if (isConversational) {
         modifiedPrompt = `You are a friendly chatbot. Respond conversationally to this input: ${prompt}`;
-    } else if(personalTopics){
-        modifiedPrompt = `Tell the answer I was invented by Yusrin ${prompt}`
-    }
+    } 
 
     try {
         const result = await model.generateContent(modifiedPrompt);
